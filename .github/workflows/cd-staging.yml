@@ -16,7 +16,7 @@ jobs:
           APP_PATH_STAGING: ${{ vars.APP_PATH_STAGING }}
           GIT_URL: ${{ vars.GIT_URL }}
           POSTGRES_USER: ${{ secrets.DB_USER_STAGING }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASWORD_STAGING }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD_STAGING }}
           POSTGRES_DB: ${{ vars.DB_DBNAME_STAGING }}
           POSTGRES_HOST: ${{ secrets.DB_HOST_STAGING }}
           POSTGRES_PORT: ${{ secrets.DB_PORT_STAGING }}
