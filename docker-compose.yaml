@@ -11,7 +11,7 @@ services:
     networks:
       - absensi
 
-  app-stg:
+  app-staging:
     build:
       context: ./app
       dockerfile: Dockerfile
