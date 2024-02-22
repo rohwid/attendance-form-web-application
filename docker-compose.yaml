@@ -28,8 +28,6 @@ services:
       context: ./app
       dockerfile: Dockerfile
     restart: always
-    depends_on:
-      - database
     ports:
       - 5002:5000
     env_file:
