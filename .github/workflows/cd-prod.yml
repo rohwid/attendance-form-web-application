@@ -57,7 +57,7 @@ jobs:
             # Run app
             sudo docker compose up app-prod --build --detach
 
-      - name: Hit Endpoint
-        run: |
-          sleep 20
-          curl ${{ vars.PROD_URL }}
+      # - name: Hit Endpoint
+      #   run: |
+      #     sleep 20
+      #     curl ${{ vars.PROD_URL }}

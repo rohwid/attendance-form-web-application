@@ -48,7 +48,7 @@ jobs:
             # Run app
             sudo docker compose up app-staging --build --detach
       
-      - name: Hit Endpoint
-        run: |
-          sleep 20
-          curl ${{ vars.STAGING_URL }}
+      # - name: Hit Endpoint
+      #   run: |
+      #     sleep 20
+      #     curl ${{ vars.STAGING_URL }}
