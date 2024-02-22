@@ -23,12 +23,13 @@ jobs:
 
       - name: Build and Run Container
         run: |
+          cat .env
           sudo docker compose up database app-dev --build --detach
 
-      # - name: Hit Endpoint
-      #   run: |
-      #     sleep 20
-      #     curl ${{ vars.DEV_URL }}
+      - name: Hit Endpoint
+        run: |
+          sleep 20
+          curl ${{ vars.DEV_URL }}
           
       - name: Testing
         run: |
