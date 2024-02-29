@@ -31,6 +31,7 @@ jobs:
             if [[ -d "/home/ubuntu/${APP_PATH_STAGING}" ]]; then 
               cd /home/ubuntu/$APP_PATH_STAGING
               sudo docker compose down
+              git stash
               git pull --rebase
             else
               ssh-keyscan github.com > ~/.ssh/known_hosts
@@ -46,7 +47,7 @@ jobs:
             echo "POSTGRES_PORT=$POSTGRES_PORT" >> .env
 
             # Run app
-            sudo docker compose up app-staging --build --detach
+            sudo docker compose up app-staging-1 app-staging-2 app-staging-3 --build --detach
       
       - name: Hit Endpoint
         run: |
