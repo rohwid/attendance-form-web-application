@@ -39,6 +39,7 @@ jobs:
             if [[ -d "/home/ubuntu/${APP_PATH_PROD}" ]]; then 
               cd /home/ubuntu/$APP_PATH_PROD
               sudo docker compose down
+              git stash
               git pull --rebase
             else
               ssh-keyscan github.com > ~/.ssh/known_hosts
@@ -56,7 +57,7 @@ jobs:
             echo "APP_TAG=$APP_TAG" >> .env
 
             # Run app
-            sudo docker compose up app-prod --build --detach
+            sudo docker compose up app-prod-1 app-prod-2 app-prod-3 --build --detach
 
       - name: Hit Endpoint
         run: |

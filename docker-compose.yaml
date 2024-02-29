@@ -1,8 +1,40 @@
 version: "3.8"
 
 services:
-  app-prod:
-    image: "${APP_IMAGE}:${APP_TAG}"
+  app-prod-1:
+    image: ${APP_IMAGE}:${APP_TAG}
+    restart: always
+    ports:
+      - 6000:5000
+    env_file:
+      - .env
+    networks:
+      - absensi
+  
+  app-prod-2:
+    image: ${APP_IMAGE}:${APP_TAG}
+    restart: always
+    ports:
+      - 6001:5000
+    env_file:
+      - .env
+    networks:
+      - absensi
+  
+  app-prod-3:
+    image: ${APP_IMAGE}:${APP_TAG}
+    restart: always
+    ports:
+      - 6002:5000
+    env_file:
+      - .env
+    networks:
+      - absensi
+  
+  app-staging-1:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
     restart: always
     ports:
       - 5000:5000
@@ -10,8 +42,8 @@ services:
       - .env
     networks:
       - absensi
-
-  app-staging:
+  
+  app-staging-2:
     build:
       context: ./app
       dockerfile: Dockerfile
@@ -23,13 +55,23 @@ services:
     networks:
       - absensi
 
+  app-staging-3:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 5002:5000
+    env_file:
+      - .env
+    networks:
+      - absensi
+
   app-dev:
     build:
       context: ./app
       dockerfile: Dockerfile
     restart: always
-    depends_on:
-      - database
     ports:
       - 5002:5000
     env_file:
